@@ -285,22 +285,20 @@ class tts2 {
                 if (voices[index].name == "Microsoft HsiaoChen Online (Natural) - Chinese (Taiwan)") { //HsiaoChen (Neural) - 曉臻 (MS Edge專用)
                     //u.voice = voices[index];
                     this._tw_voice = voices[index];
-                    return this._tw_voice;
+                    return voices[index];
                     //break;
                 } else if (voices[index].name == "Google 國語（臺灣）") { //Chrome專用
                     //console.log("Y");
                     //this.u.lang = 'zh-TW';
                     //u.voice = voices[index];
                     this._tw_voice = voices[index];
-                    return this._tw_voice;
+                    return voices[index];
                     //break;
                 } else {
                     //console.log("N");
                     //u.lang = 'zh-TW';
-                    
-                    //可能有bug
-                    this._tw_voice = null;
-                    return this._tw_voice;
+                    //this._tw_voice = null;
+                    return null;
                 }
             }
         }else{
@@ -353,7 +351,7 @@ class tts2 {
             //取得語音
             let tw_voice = this.get_tw_voice();
             if(tw_voice === null || tw_voice === false){
-                //u.lang = 'zh-TW'; //可能有bug
+                u.lang = 'zh-TW'; //可能有bug
             }else{
                 u.voice = tw_voice;
             }
