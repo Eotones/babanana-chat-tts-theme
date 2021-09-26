@@ -1,0 +1,124 @@
+@charset "utf-8";
+/* CSS Document */
+
+div {
+    font-family: 'Roboto', sans-serif;
+}
+html,body {
+    #background-color: transparent;
+    background-color:rgb(0, 0, 0);
+    margin:0; 
+    overflow-x: hidden;		
+    overflow-y: hidden;
+    height: 100%;
+    
+    text-shadow: 0 0 1px #000, 1px 0 1px #000, 0 1px 1px #000, 1px 1px 1px #000;
+}
+a {
+    color:#67CE00; 
+}
+.div_message1 {	   
+    vertical-align: bottom;
+    ##border-bottom:1px solid #111111 !important;	
+    ##background-color: rgb(0, 0, 0);
+    padding-left:7px;
+    padding-right:3px;
+    padding-bottom:1px;
+    padding-top: 2px;
+    position: relative;
+    word-wrap: break-word;
+}
+.div_message2 {
+    vertical-align: bottom;
+    ##border-bottom:1px solid #111111 !important;
+    ##background-color: rgb(0, 0, 0);
+    padding-left:7px;
+    padding-right:3px;
+    padding-bottom:1px;
+    padding-top: 2px;
+    position: relative;
+    word-wrap: break-word;
+}
+
+#div_site {
+    color:#67CE00; 
+}  
+ 
+#div_nick {
+    color:#00A4F2;
+    font-weight: bold;	
+    font-size:15px;
+} 
+#div_nick_favorite {
+    color:#FFD700;
+    font-weight: bold;	   
+} 
+#div_text0 {	
+    color:#FFFFFF;
+    font-size:15px;		
+}
+#div_text1 {	
+    color:#F90;
+    font-size:15px;		
+}
+.site-img{	}
+
+#special {
+    padding: 5px;
+}
+#alert {
+
+}
+
+#chat-wrapper {
+   position: relative;
+   overflow: auto;
+   height: 100%;
+}
+#content, #chat-wrapper {
+   overflow: hidden;
+   box-sizing: border-box;
+}
+
+#message_special {
+    vertical-align: bottom;
+    ##border-bottom:1px solid #111111 !important;
+    ##background-color: rgb(0, 0, 0);
+    padding-left:7px;
+    padding-right:3px;
+    padding-bottom:1px;
+    padding-top: 2px;
+    position: relative;
+    word-wrap: break-word;
+    
+    color:#FFFFFF;
+    background-color: #0080FF;
+}
+#message_alert {
+    vertical-align: bottom;
+    ##border-bottom:1px solid #111111 !important;
+    ##background-color: rgb(0, 0, 0);
+    padding-left:7px;
+    padding-right:3px;
+    padding-bottom:1px;
+    padding-top: 2px;
+    position: relative;
+    word-wrap: break-word;
+    
+    color:#00A4F2;
+    font-weight: bold;
+}
+#message_system {
+    vertical-align: bottom;
+    ##border-bottom:1px solid #111111 !important;
+    ##background-color: rgb(0, 0, 0);
+    padding-left:7px;
+    padding-right:3px;
+    padding-bottom:1px;
+    padding-top: 2px;
+    position: relative;
+    word-wrap: break-word;
+    
+    color:#FFFFFF;
+    ##font-weight: bold;		
+}

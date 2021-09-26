@@ -1,0 +1,105 @@
+@charset "utf-8";
+
+:root {
+    --text-shadow-black:
+        -2px -2px 0 #000000ff,
+        -2px -1px 0 #000000ff,
+        -2px 0px 0 #000000ff,
+        -2px 1px 0 #000000ff,
+        -2px 2px 0 #000000ff,
+        -1px -2px 0 #000000ff,
+        -1px -1px 0 #000000ff,
+        -1px 0px 0 #000000ff,
+        -1px 1px 0 #000000ff,
+        -1px 2px 0 #000000ff,
+        0px -2px 0 #000000ff,
+        0px -1px 0 #000000ff,
+        0px 0px 0 #000000ff,
+        0px 1px 0 #000000ff,
+        0px 2px 0 #000000ff,
+        1px -2px 0 #000000ff,
+        1px -1px 0 #000000ff,
+        1px 0px 0 #000000ff,
+        1px 1px 0 #000000ff,
+        1px 2px 0 #000000ff,
+        2px -2px 0 #000000ff,
+        2px -1px 0 #000000ff,
+        2px 0px 0 #000000ff,
+        2px 1px 0 #000000ff,
+        2px 2px 0 #000000ff;
+}
+
+div {
+    font-family: '微軟正黑體', sans-serif;
+}
+
+html,body {
+    /*background-color: transparent;*/
+    background-color: rgb(0, 0, 0);
+    /*margin:0; */
+    overflow-x: hidden;		
+    overflow-y: hidden;
+    height: 100%;
+    
+    /*text-shadow: var(--text-shadow-black);*/
+    
+    font-weight: bold;
+}
+
+#tool {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    
+    background-color: rgba(255, 255, 255, 0.8);
+    
+    box-sizing: border-box;
+    width: 190px;
+    /*min-height: 100px;*/
+    padding: 0px;
+    
+    border-radius: 5px 5px 4px 4px;
+    
+    color: #000;
+    text-shadow: none;
+    font-weight: normal;
+}
+
+h3#ba_title {
+    font-size: 10px;
+    margin: 0 0 10px 0;
+    padding: 10px;
+    font-weight: normal;
+    
+    border-radius: 4px 4px 0 0;
+    
+    color: #fff;
+    background-color: rgb(20, 30, 30);
+}
+.ttsdiv {
+    padding: 10px 10px 20px 10px;
+    font-size: 16px;
+}
+
+
+#div_site {
+    color:#67CE00; 
+}  
+ 
+#div_nick {
+    color:#00A4F2;
+    font-weight: bold;
+    font-size:24px;
+} 
+#div_nick_favorite {
+    color:#FFD700;
+    font-weight: bold;   
+} 
+#div_text0 {	
+    color:#FFFFFF;
+    font-size:24px;
+}
+#div_text1 {	
+    color:#F90;
+    font-size:24px;
+}

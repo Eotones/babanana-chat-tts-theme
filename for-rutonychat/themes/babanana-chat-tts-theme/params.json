@@ -1,0 +1,491 @@
+﻿{
+  "themeIndex": "default",
+  "params": [
+    {
+      "name": "FontNickname",
+ 	  "category": {
+        "russian": "Никнейм",
+        "english": "Nickname",
+        "tchinese": "Nickname"
+      },
+	  "desc": {
+        "russian": "Шрифт никнейма",
+        "english": "Font Nickname",
+        "tchinese": "Font Nickname"
+      },
+	  "fullDesc": {
+        "russian": "Шрифт никнейма",
+        "english": "Font Nickname",
+        "tchinese": "Font Nickname"
+      },	  
+      "type": "font",
+      "default": {
+		"name" : "Roboto",
+		"size" : 15
+	  }
+    },	
+    {
+      "name": "FontText",
+	  "category": {
+        "russian": "Сообщение",
+        "english": "Message",
+        "tchinese": "Message"
+      },
+      "desc": {
+        "russian": "Шрифт текста",
+        "english": "Font text",
+        "tchinese": "Font text"
+      },
+      "type": "font",
+      "default": {
+		"name" : "Roboto",
+		"size" : 15
+	  }
+    },		
+    {
+      "name": "NicknameColor",
+	  "category": {
+        "russian": "Никнейм",
+        "english": "Nickname",
+        "tchinese": "Nickname"
+      },
+      "desc": {
+        "russian": "Цвет ника",
+        "english": "Nickname color",
+        "tchinese": "Nickname color"
+      },
+      "type": "color",
+      "default": "#00A4F2"
+    },
+    {
+      "name": "ReplyColor",
+      "desc": {
+        "russian": "Цвет ответа",
+        "english": "Reply color",
+        "tchinese": "Reply color"
+      },
+	  "category": {
+        "russian": "Сообщение",
+        "english": "Message",
+        "tchinese": "Message"
+      },	  
+      "type": "color",
+      "default": "#F90"
+    },	
+    {
+      "name": "TextColor",
+      "desc": {
+        "russian": "Цвет текста",
+        "english": "Text color",
+        "tchinese": "Text color"
+      },
+	  "category": {
+        "russian": "Сообщение",
+        "english": "Message",
+        "tchinese": "Message"
+      },	  
+      "type": "color",
+      "default": "#ffffff"
+    },
+    {
+      "name": "LinksColor",
+      "desc": {
+        "russian": "Цвет ссылок",
+        "english": "Links color",
+        "tchinese": "Links color"
+      },
+	  "category": {
+        "russian": "Сообщение",
+        "english": "Message",
+        "tchinese": "Message"
+      },
+      "type": "color",
+      "default": "#67CE00"
+    },		
+    {
+      "name": "ShowEffect",
+      "desc": {
+        "russian": "Эффект появления сообщений",
+        "english": "Show messages effect",
+        "tchinese": "Show messages effect"
+      },
+      "type": "list",
+	  "category": {
+        "russian": "Фон",
+        "english": "Background",
+        "tchinese": "Background"
+      },
+      "default": "none",
+      "enumerate": [
+        {
+          "value": "none"
+        },	  
+        {
+          "value": "fadeIn"
+        },
+        {
+          "value": "zoomIn"
+        },
+        {
+          "value": "bounce"
+        },
+        {
+          "value": "bounceIn"
+        },		
+        {
+          "value": "bounceInRight"
+        },
+        {
+          "value": "bounceInLeft"
+        },		
+        {
+          "value": "bounceIn"
+        },
+        {
+          "value": "flipInX"
+        },
+        {
+          "value": "flipInY"
+        },
+        {
+          "value": "lightSpeedIn"
+        },		
+        {
+          "value": "slideInRight"
+        },	
+        {
+          "value": "slideInLeft"
+        },
+        {
+          "value": "float"
+        },
+        {
+          "value": "backInDown"
+        },
+        {
+          "value": "backInLeft"
+        },
+        {
+          "value": "backInRight"
+        },
+        {
+          "value": "backInUp"
+        },
+        {
+          "value": "jackInTheBox"
+        }    
+		]
+    },
+    {
+      "name": "HideMessages",
+      "desc": {
+        "russian": "Скрывать сообщения",
+        "english": "Hide messages",
+        "tchinese": "Hide messages"
+      },
+	  "category": {
+        "russian": "Фон",
+        "english": "Background",
+        "tchinese": "Background"
+      },
+      "type": "bool",
+      "default": false
+    },	
+    {
+      "name": "TimeNewMessages",
+      "desc": {
+        "russian": "Время показа сообщений",
+        "english": "Time showing messages",
+        "tchinese": "Time showing messages"
+      },
+      "type": "integer",
+	  "category": {
+        "russian": "Фон",
+        "english": "Background",
+        "tchinese": "Background"
+      },
+      "default": 10,
+      "min":2,
+      "max": 600
+    },	
+    {
+      "name": "HideEffect",
+      "desc": {
+        "russian": "Эффект скрытия сообщений",
+        "english": "Hide messages effect",
+        "tchinese": "Hide messages effect"
+      },
+      "type": "list",
+	  "category": {
+        "russian": "Фон",
+        "english": "Background",
+        "tchinese": "Background"
+      },
+      "default": "none",
+      "enumerate": [
+        {
+          "value": "none"
+        },	  
+        {
+          "value": "fadeOut"
+        },
+        {
+          "value": "fadeOutLeft"
+        },
+        {
+          "value": "fadeOutRight"
+        },
+        {
+          "value": "bounceOut"
+        },	
+        {
+          "value": "bounceOutLeft"
+        },	
+        {
+          "value": "bounceOutRight"
+        },			
+        {
+          "value": "zoomOut"
+        },
+        {
+          "value": "slideOutLeft"
+        },	
+        {
+          "value": "slideOutRight"
+        },
+		{
+          "value": "flipOutX"
+        },	
+		{
+          "value": "flipOutY"
+        },			
+        {
+          "value": "backOutDown"
+        },
+        {
+          "value": "backOutLeft"
+        },
+        {
+          "value": "backOutRight"
+        },
+        {
+          "value": "backOutUp"
+        },
+        {
+          "value": "bye"
+        }
+		]
+    },	
+    {
+      "name": "NicknameShadow",
+      "desc": {
+        "russian": "Тень для ника",
+        "english": "Nickname shadow",
+        "tchinese": "Nickname shadow"
+      },
+      "type": "bool",
+      "default": false
+    },
+    {
+      "name": "ShadowColor",
+      "desc": {
+        "russian": "Цвет тени",
+        "english": "Shadow color",
+        "tchinese": "Shadow color"
+      },
+      "type": "color",
+      "default": "#00A4F2"
+    },	
+    {
+      "name": "ShadowSize",
+      "desc": {
+        "russian": "Размер тени",
+        "english": "Shadow size",
+        "tchinese": "Shadow size"
+      },
+      "type": "float",
+      "default": 1,
+      "min": 1,
+      "max": 100
+    },
+    {
+      "name": "ShowSiteIcons",
+      "desc": {
+        "russian": "Показывать иконки сайтов",
+        "english": "Show site icons",
+        "tchinese": "Show site icons"
+      },
+      "type": "bool",
+      "default": true
+    },
+	{
+      "name": "AlertsColor",
+      "desc": {
+        "russian": "Цвет уведомлений",
+        "english": "Color of alerts",
+        "tchinese": "Color of alerts"
+      },
+      "type": "color",
+      "default": "#FFFFFF"
+    },
+	{
+      "name": "AlertsFont",
+      "desc": {
+        "russian": "Шрифт уведомлений",
+        "english": "Font of alerts",
+        "tchinese": "Font of alerts"
+      },
+      "type": "font",
+      "default": {
+        "name" : "Roboto",
+        "size" : 15,
+		"style": "Bold"
+      }
+    },	
+    {
+      "name": "ColorBackSpecial",
+      "desc": {
+        "russian": "Цвет особой полосы",
+        "english": "Color highlight back",
+        "tchinese": "Color highlight back"
+      },
+	  "category": {
+        "russian": "Специальные сообщения",
+        "english": "Special messages",
+        "tchinese": "Special messages"
+      },	  
+      "type": "color",
+      "default": "#0080FF"
+    },	
+    {
+      "name": "TextColorSpecial",
+      "desc": {
+        "russian": "Цвет особого текста",
+        "english": "Text highlight color",
+        "tchinese": "Text highlight color"
+      },
+      "type": "color",
+	  "category": {
+        "russian": "Специальные сообщения",
+        "english": "Special messages",
+        "tchinese": "Special messages"
+      },		  
+      "default": "#ffffff"
+    },	
+    {
+      "name": "FontTextSpecial",
+      "desc": {
+        "russian": "Шрифт особого текста",
+        "english": "Font highlight text",
+        "tchinese": "Font highlight text"
+      },
+      "type": "font",
+	  "category": {
+        "russian": "Специальные сообщения",
+        "english": "Special messages",
+        "tchinese": "Special messages"
+      },		  
+      "default": {
+        "name" : "Roboto",
+        "size" : 15
+      }
+    },
+    {
+      "name": "ColorBackSystem",
+      "desc": {
+        "russian": "Цвет системной полосы",
+        "english": "Color system back",
+        "tchinese": "Color system back"
+      },
+	  "category": {
+        "russian": "Системные сообщения",
+        "english": "System messages",
+        "tchinese": "System messages"
+      },		  
+      "type": "color",
+      "default": "#00000000"
+    },	
+    {
+      "name": "TextColorSystem",
+      "desc": {
+        "russian": "Цвет системного текста",
+        "english": "Text system color",
+        "tchinese": "Text system color"
+      },
+	  "category": {
+        "russian": "Системные сообщения",
+        "english": "System messages",
+        "tchinese": "System messages"
+      },		  
+      "type": "color",
+      "default": "#ffffff"
+    },	
+    {
+      "name": "FontTextSystem",
+      "desc": {
+        "russian": "Шрифт системного текста",
+        "english": "Font system text",
+        "tchinese": "Font system text"
+      },
+      "type": "font",
+	  "category": {
+        "russian": "Системные сообщения",
+        "english": "System messages",
+        "tchinese": "System messages"
+      },		  
+      "default": {
+        "name" : "Roboto",
+        "size" : 15
+      }
+    },
+    {
+      "name": "ColorBackAlert",
+      "desc": {
+        "russian": "Цвет полосы оповещения",
+        "english": "Color alert back",
+        "tchinese": "Color alert back"
+      },
+	  "category": {
+        "russian": "Оповещения в чате",
+        "english": "Alert's messages",
+        "tchinese": "Alert's messages"
+      },	  
+      "type": "color",
+      "default": "#00000000"
+    },	
+    {
+      "name": "TextColorAlert",
+      "desc": {
+        "russian": "Цвет текста оповещения",
+        "english": "Text alert color",
+        "tchinese": "Text alert color"
+      },
+      "type": "color",
+	  "category": {
+        "russian": "Оповещения в чате",
+        "english": "Alert's messages",
+        "tchinese": "Alert's messages"
+      },		  
+      "default": "#ffffff"
+    },	
+    {
+      "name": "FontTextAlert",
+      "desc": {
+        "russian": "Шрифт текста оповещения",
+        "english": "Font alert text",
+        "tchinese": "Font alert text"
+      },
+	  "category": {
+        "russian": "Оповещения в чате",
+        "english": "Alert's messages",
+        "tchinese": "Alert's messages"
+      },		  
+      "type": "font",
+      "default": {
+        "name" : "Roboto",
+        "size" : 15,
+		"style": "Bold"
+      }
+    }
+  ]
+}

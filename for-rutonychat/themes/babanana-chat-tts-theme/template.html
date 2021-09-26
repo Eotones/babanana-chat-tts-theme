@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta content='width=device-width, initial-scale=1' name='viewport'/>
+    
+    <title>BABANANA Chat Theme for RutonyChat</title>
+
+    <!--<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto&subset=latin,cyrillic,cyrillic-ext">-->
+    
+    <link rel="stylesheet" type="text/css" href="../perfect-scrollbar.min.css" />
+    <!--<link rel="stylesheet" type="text/css" href="../animate.css" >-->
+    
+    <link rel="stylesheet" type="text/css" href="chat.css" />
+    <link rel="stylesheet" type="text/css" href="babanana_chat.css" />
+
+    <script src="../jquery.min.js"></script>
+    <script src="../jquery.tmpl.js"></script>
+    <script src="../extended_methods.js"></script>
+    <script src="../perfect-scrollbar.jquery.min.js"></script>
+
+    <script src="./tts.js"></script>
+</head>
+
+<body>
+    <div id="chat-wrapper" class="nano">
+        <div class="nano-content" id="content">	</div>
+    </div>
+    <div id="bottom"> </div>
+    
+    <div id="tool">
+        <h3 id="ba_title">BABANANA Chat TTS Theme <br>for RutonyChat</h3>
+        <div class="ttsdiv"><label for="ttsCheck"><input type="checkbox" id="ttsCheck"> Text to Speech</label></div>
+    </div>
+    
+    <script type="text/javascript">
+        const ttsCheck = document.getElementById("ttsCheck");
+        ttsCheck.addEventListener('change', function (e) {
+            if (e.target.checked) { //checked
+                console.log("#ttsCheck true");
+                tts.start_tts();
+            } else { //not checked
+                console.log("#ttsCheck false");
+                tts.cancel2();
+            }
+        });
+    </script>
+
+    <script type="text/javascript">
+
+        var autoScroll = true;		
+
+        $(document).ready(function() { 			
+            
+            SetAutoScrollPerfect();		
+            
+            SetSocket();			
+            
+        }); 
+        
+
+        // ======================================
+            
+        var themeIndex = "default";
+        
+        function InitParams(data) {
+        
+            //console.debug(data);
+            
+            if  (data.themeIndex == themeIndex) {
+                getStyleRule('#div_nick').color = data.NicknameColor;
+                getStyleRule('#div_nick').fontSize = data.FontNickname.size + 'px';
+                getStyleRule('#div_nick').fontFamily = data.FontNickname.name;		
+                getStyleRule('#div_text0').color = data.TextColor;
+                getStyleRule('#div_text1').color = data.ReplyColor;				
+                getStyleRule('#div_text0').fontSize = data.FontText.size + 'px';
+                getStyleRule('#div_text1').fontSize = data.FontText.size + 'px';
+                getStyleRule('#div_text0').fontFamily = data.FontText.name;
+                getStyleRule('#div_text1').fontFamily = data.FontText.name;
+                SetFontStyle('#div_text1', data.FontText.style);
+                SetFontStyle('#div_text0', data.FontText.style);
+                
+                getStyleRule('a').color = data.LinksColor;
+
+                getStyleRule('#message_system').backgroundColor = data.ColorBackSystem;
+                getStyleRule('#message_alert').backgroundColor = data.ColorBackAlert;
+                getStyleRule('#message_special').backgroundColor = data.ColorBackSpecial;
+
+                getStyleRule('#message_system').backgroundColor = data.ColorBackSystem;
+                getStyleRule('#message_alert').backgroundColor = data.ColorBackAlert;
+                getStyleRule('#message_special').backgroundColor = data.ColorBackSpecial;
+
+                getStyleRule('#message_system').fontSize = data.FontTextSystem.size + 'px';
+                getStyleRule('#message_alert').fontSize = data.FontTextAlert.size + 'px';
+                getStyleRule('#message_special').fontSize = data.FontTextSpecial.size + 'px';
+
+                getStyleRule('#message_system').fontFamily = data.FontTextSystem.name;
+                getStyleRule('#message_alert').fontFamily = data.FontTextAlert.name;
+                getStyleRule('#message_special').fontFamily = data.FontTextSpecial.name;
+                
+                SetFontStyle('#message_system', data.FontTextSystem.style);			
+                SetFontStyle('#message_alert', data.FontTextAlert.style);			
+                SetFontStyle('#message_special', data.FontTextSpecial.style);			
+                
+                getStyleRule('#message_system').color = data.TextColorSystem;
+                getStyleRule('#message_alert').color = data.TextColorAlert;
+                getStyleRule('#message_special').color = data.TextColorSpecial;
+
+                if (data.NicknameShadow == true) {
+                    getStyleRule('#div_nick').textShadow = '0px 0px ' + data.ShadowSize + 'px ' + data.ShadowColor;
+                } else {
+                    getStyleRule('#div_nick').textShadow = '';
+                }
+                
+                showEffect = data.ShowEffect;
+                hideEffect = data.HideEffect;
+                qtyMessages = data.QtyMessages;
+                timeNewMessage = data.TimeNewMessages * 1000;
+                hideMessages = data.HideMessages;
+                showSiteIcons = data.ShowSiteIcons;
+            }
+            
+        }
+
+        // =======================================
+        
+        var hideMessages = false;
+        var qtyMessages = 5;
+        var qtyAllMessages = 300;
+        var timeNewMessage = 10000;	
+        
+        var showEffect = "none";
+        var hideEffect = "none";
+        var showSiteIcons = true;
+        
+        function NewMessage(data) {
+            
+            var obj = JSON.parse( data );
+                    
+            if (obj.clear_chat) {
+            
+                $(".user_mess[tag='" + obj.message_id + "']").text(obj.text);
+                    
+            } else {		
+            /////////////////////////////////////////
+
+                //obj.user = obj.user + '/' + obj.type;
+
+                if (obj.type == "message") {
+                    if (showSiteIcons) {
+                        $("#content").append(
+                            $('#message_template').tmpl(obj)
+                        );
+                    } else {
+                        $("#content").append(
+                            $('#wout_message_template').tmpl(obj)
+                        );
+                    }
+                    
+                    //tts
+                    //console.log(obj);
+                    if(ttsCheck.checked == true){
+                        tts.speak2(obj.text_text);
+                    }
+                }
+
+                if (obj.type == "system") {
+                    $("#content").append(
+                        $('#message_template_system').tmpl(obj)
+                    );
+                }
+
+                if (obj.type == "alert") {
+                    $("#content").append(
+                        $('#message_template_alert').tmpl(obj)
+                    );
+                }
+
+                if (obj.type == "special") {
+                    $("#content").append(
+                        $('#message_template_special').tmpl(obj)
+                    );
+                }
+                    
+                var lastMess = $('.mess').last();
+                            
+                lastMess
+                .addClass('animated ' + showEffect)
+                .one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
+                function() {	
+                    if (hideMessages) {
+                        setTimeout(function() {
+                            lastMess
+                            .removeClass('animated')
+                            .removeClass(showEffect)
+                            .addClass('animated ' + hideEffect)
+                            .one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
+                            function() {
+                                $(this).detach();
+                            });
+                        }, timeNewMessage);				
+                    }
+                });
+                
+                
+            /////////////////////////////////////////			
+            }
+            
+            if ($('.mess').length > qtyAllMessages) {
+                $('.mess:first').detach();
+            }
+
+            UpdateScroll();
+        }
+            
+    </script>
+
+    <script id="message_template" type="text/x-jquery-tmpl">
+        <div class="mess" id="lastblock">
+            <div class="div_message${x2}">
+                <span> <span class="site-img">${site_img}</span> ${moderator} ${sub} ${spec_img} ${rank_img} </span> <span id="div_nick" style="color:${color_nick}">${user}: </span>
+                <span class="user_mess" id="div_text${reply}" tag="${message_id}" style="color:${color_text}">${text}</span>
+            </div>
+        </div>
+    </script>
+    <script id="wout_message_template" type="text/x-jquery-tmpl">
+        <div class="mess" id="lastblock">
+            <div class="div_message${x2}">
+                <span class="site-img">${moderator} ${sub} ${spec_img} ${rank_img} </span> <span id="div_nick">${user}: </span>
+                <span class="user_mess" id="div_text${reply}" tag="${message_id}" style="color:${color_text}">${text}</span>
+            </div>
+        </div>
+    </script>
+    <script id="message_template_system" type="text/x-jquery-tmpl">
+        <div class="mess" id="lastblock">
+            <div id="message_system">
+                <span> <span class="site-img">${site_img}</span> ${moderator} ${sub} ${spec_img} ${rank_img} </span> <span id="div_nick" style="color:${color_nick}">${user}: </span>
+                <span class="user_mess" id="div_text${reply}" tag="${message_id}" style="color:${color_text}">${text}</span>
+            </div>
+        </div>
+    </script>
+    <script id="message_template_alert" type="text/x-jquery-tmpl">
+        <div class="mess" id="lastblock">
+            <div id="message_alert">
+                ${site_img} ${text}
+            </div>
+        </div>
+    </script>
+    <script id="message_template_special" type="text/x-jquery-tmpl">
+        <div class="mess" id="lastblock">
+            <div id="message_special">
+                ${site_img} ${moderator} ${sub} ${spec_img} ${rank_img} ${user}: ${text}
+            </div>
+        </div>
+    </script>
+</body>
+</html>
