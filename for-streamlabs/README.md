@@ -202,8 +202,6 @@ class tts2 {
 
         this.tts_state = "idle"; // idle, speaking
 
-        this._tw_voice = null;
-
         //
 
         this.u_rate = 1.2; // 語速 0.1~10
@@ -264,48 +262,6 @@ class tts2 {
         this.tts_queue.push(tts_msg);
     }
 
-    //取得TW中文語音
-    get_tw_voice(){
-        if(this._tw_voice === null || this._tw_voice === false){
-            //因為瀏覽器載入語音列表常有延遲(可能有數分鐘以上),所以在 this._tw_voice === false 時還是會繼續嘗試重新取得語音列表(在每次唸語音前嘗試)
-            //目前語音主要使用者皆為Google Chrome或Chrumium Edge,例外瀏覽器暫不處理
-
-            let voices = this.synth.getVoices();
-            for (let index = 0; index < voices.length; index++) {
-                /*
-                "Google US English"
-                "Google 日本語"
-                "Google 普通话（中国大陆）"
-                "Google 粤語（香港）"
-                "Google 國語（臺灣）"
-                */
-
-                //console.log(this.voices[index].name);
-
-                if (voices[index].name == "Microsoft HsiaoChen Online (Natural) - Chinese (Taiwan)") { //HsiaoChen (Neural) - 曉臻 (MS Edge專用)
-                    //u.voice = voices[index];
-                    this._tw_voice = voices[index];
-                    return voices[index];
-                    //break;
-                } else if (voices[index].name == "Google 國語（臺灣）") { //Chrome專用
-                    //console.log("Y");
-                    //this.u.lang = 'zh-TW';
-                    //u.voice = voices[index];
-                    this._tw_voice = voices[index];
-                    return voices[index];
-                    //break;
-                } else {
-                    //console.log("N");
-                    //u.lang = 'zh-TW';
-                    //this._tw_voice = null;
-                    return null;
-                }
-            }
-        }else{
-            return this._tw_voice;
-        }
-    }
-
     tts_speak(tts_msg){
         try{
             //console.log(document.getElementById("ttsCheck").checked == true ? "[語音開啟]" : "[語音關閉]");
@@ -347,13 +303,30 @@ class tts2 {
                 console.log("tts.onerror", event);
                 this.cancel2();
             };
+            
+            let voices = this.synth.getVoices();
+            for (let index = 0; index < voices.length; index++) {
+                /*
+                "Google US English"
+                "Google 日本語"
+                "Google 普通话（中国大陆）"
+                "Google 粤語（香港）"
+                "Google 國語（臺灣）"
+                */
 
-            //取得語音
-            let tw_voice = this.get_tw_voice();
-            if(tw_voice === null || tw_voice === false){
-                u.lang = 'zh-TW'; //可能有bug
-            }else{
-                u.voice = tw_voice;
+                //console.log(this.voices[index].name);
+
+                if (voices[index].name == "Microsoft HsiaoChen Online (Natural) - Chinese (Taiwan)") { //HsiaoChen (Neural) - 曉臻 (MS Edge專用)
+                    u.voice = voices[index];
+                    break;
+                } else if (voices[index].name == "Google 國語（臺灣）") { //Chrome專用
+                    //console.log("Y");
+                    u.voice = voices[index];
+                    break;
+                } else {
+                    //console.log("N");
+                    //u.lang = 'zh-TW';
+                }
             }
 
             //瀏覽器原生文字轉語音
