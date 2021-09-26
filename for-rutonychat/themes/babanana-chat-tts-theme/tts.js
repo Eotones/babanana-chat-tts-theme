@@ -342,6 +342,44 @@ class tts2 {
     }
 
     _textFilter(msg) {
+        msg = msg.trim(); //去除前後空白
+        
+        //網址不唸
+        //msg = msg.replace(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/g, "網址");
+        msg = msg.replace(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/g, "");
+
+        //全形轉半形
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/normalize
+        msg = msg.normalize('NFKC');
+
+        //過濾掉中文,英文,數字,半形空白以外的所有字元
+        msg = msg.replace(/[^0-9a-z\u4E00-\u9FFF\u3400-\u4DBF\uF900-\uFAFF ]/ig, ""); // *不要用\s取代空白,因為\s包含全形空白
+
+        msg = msg.trim(); //去除前後空白
+
+        msg = msg.replace(/^(1){4,}$/g, "一一一");
+        msg = msg.replace(/^(2){4,}$/g, "二二二");
+        msg = msg.replace(/^(3){4,}$/g, "三三三");
+        msg = msg.replace(/^(4){4,}$/g, "四四四");
+        msg = msg.replace(/^(5){4,}$/g, "五五五");
+        msg = msg.replace(/^(6){4,}$/g, "六六六");
+        msg = msg.replace(/^(7){4,}$/g, "七七七");
+        msg = msg.replace(/^(8){4,}$/g, "八八八");
+        msg = msg.replace(/^(9){4,}$/g, "九九九");
+
+        msg = msg.replace(/^(w){4,}$/gi, "哇拉");
+        //msg = msg.replace(/^(~){3,}$/g, "~~~");
+        //msg = msg.replace(/^(\.){3,}$/g, "...");
+
+        msg = msg.replace(/^484$/gi, "四八四");
+        msg = msg.replace(/^87$/g, "八七");
+        msg = msg.replace(/^94$/g, "九四");
+        msg = msg.replace(/^9487$/g, "九四八七");
+
+        return msg;
+    }
+
+    _textFilter_old(msg) {
         //網址不唸
         //msg = msg.replace(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/g, "網址");
         msg = msg.replace(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/g, "");
