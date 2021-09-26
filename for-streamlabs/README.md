@@ -325,7 +325,12 @@ class tts2 {
                     break;
                 } else {
                     //console.log("N");
-                    //u.lang = 'zh-TW';
+                    //u.lang = 'zh-TW'; //這邊可能會有語音又被切回系統語音的問題
+                }
+                
+                //當最後一個都還沒找到時才設u.lang
+                if(index+1 === voices.length){
+                    u.lang = 'zh-TW';
                 }
             }
 
