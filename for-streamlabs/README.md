@@ -297,7 +297,9 @@ class tts2 {
                 } else {
                     //console.log("N");
                     //u.lang = 'zh-TW';
-                    this._tw_voice = false;
+                    
+                    //可能有bug
+                    this._tw_voice = null;
                     return this._tw_voice;
                 }
             }
@@ -351,7 +353,7 @@ class tts2 {
             //取得語音
             let tw_voice = this.get_tw_voice();
             if(tw_voice === null || tw_voice === false){
-                u.lang = 'zh-TW';
+                //u.lang = 'zh-TW'; //可能有bug
             }else{
                 u.voice = tw_voice;
             }
@@ -516,7 +518,7 @@ document.addEventListener('onLoad', function(obj) {
 document.addEventListener('onEventReceived', function(obj) {
   // obj will contain information about the event
 	//console.log('[onEventReceived]', obj);
-  if (obj.detail.command == 'PRIVMSG') {
+  if (obj.detail.command == 'PRIVMSG' || obj.detail.command == 'youtube#liveChatMessage' || obj.detail.command == 'ChatMessage') { // twitch,yt,fb
     if(ttsCheck.checked == true){
     	console.log('[onEventReceived]', obj);
     	tts.speak2(obj.detail.body);
