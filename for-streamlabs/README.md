@@ -58,7 +58,8 @@ html, body {
 body {
     text-shadow: 0 0 1px #000, 0 0 2px #000;
     background: {background_color};
-    font-family: 'Roboto';
+    background-color: rgba(0, 0, 0, 0.5) !important; /* 背景色這行要加到OBS裡才有效,加這邊會被streamlabs洗掉*/
+    font-family: "Roboto", "微軟正黑體", sans-serif;
     font-weight: 700;
     font-size: {font_size};
     line-height: 1.5em;
